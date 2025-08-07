@@ -31,7 +31,7 @@ const CoopSearch = () => {
         setOpenSnackbar(true);
       }
     } catch (error) {
-      setSnackbarMessage("An error occurred while searching");
+      setSnackbarMessage("Cooperative not found");
       setOpenSnackbar(true);
     }
   };
