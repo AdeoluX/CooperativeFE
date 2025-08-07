@@ -1,4 +1,4 @@
-const API_BASE_URL = "http://localhost:3004/api/v1";
+const API_BASE_URL = "https://coopsaas-production.up.railway.app/api/v1";
 
 class ApiService {
   constructor() {
