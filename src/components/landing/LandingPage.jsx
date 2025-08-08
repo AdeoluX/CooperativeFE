@@ -17,6 +17,7 @@ import SettingsInputComponentIcon from "@mui/icons-material/SettingsInputCompone
 import SupportAgentIcon from "@mui/icons-material/SupportAgent";
 import React from "react";
 import chartImage from "../../assets/chart.jpg";
+import { useNavigate } from "react-router-dom";
 
 const featureData = [
   {
@@ -82,6 +83,7 @@ const testimonials = [
 ];
 
 const LandingPage = () => {
+  const navigate = useNavigate();
   return (
     <Box>
       <AppBar
@@ -161,7 +163,7 @@ const LandingPage = () => {
             <Box sx={{ display: { xs: "none", md: "flex" }, gap: 2, ml: 3 }}>
               <Button
                 variant="outlined"
-                href="/auth/search"
+                onClick={() => navigate("/auth/search")}
                 sx={{
                   "&:focus": {
                     outline: "none", // Removes the focus outline

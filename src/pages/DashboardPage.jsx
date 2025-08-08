@@ -201,7 +201,19 @@ const DashboardPage = () => {
             </IconButton>
           </Box>
         </Box>
-        <Outlet />
+        <Box
+          sx={{
+            height: "96vh",
+            flex: 1,
+            // bgcolor: "pink",
+            overflowY: "auto", // Enables scrolling
+            scrollbarWidth: "none", // Firefox: hides scrollbar
+            "&::-webkit-scrollbar": { display: "none" }, // Chrome/Safari: hides scrollbar
+            "-ms-overflow-style": "none", // Edge: hides scrollbar
+          }}
+        >
+          <Outlet />
+        </Box>
       </Box>
     </Box>
   );
