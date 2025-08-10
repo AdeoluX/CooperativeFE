@@ -13,6 +13,7 @@ import SavingsOutlinedIcon from "@mui/icons-material/SavingsOutlined";
 import PeopleAltOutlinedIcon from "@mui/icons-material/PeopleAltOutlined";
 import AddSharpIcon from "@mui/icons-material/AddSharp";
 import RecyclingSharpIcon from "@mui/icons-material/RecyclingSharp";
+import KeyboardDoubleArrowUpOutlinedIcon from "@mui/icons-material/KeyboardDoubleArrowUpOutlined";
 import React from "react";
 
 const cardList = [
@@ -39,6 +40,72 @@ const cardList = [
     name: "Cooperatives",
     icon: <PeopleAltOutlinedIcon />,
     amount: 5,
+  },
+];
+
+const activities = [
+  {
+    id: 1,
+    icon: <KeyboardDoubleArrowUpOutlinedIcon />,
+    description: "Contribution to Coop",
+    date: "January 10, 2025",
+    amount: "500",
+  },
+  {
+    id: 1,
+    icon: <KeyboardDoubleArrowUpOutlinedIcon />,
+    description: "Contribution to Coop",
+    date: "January 10, 2025",
+    amount: "500",
+  },
+  {
+    id: 1,
+    icon: <KeyboardDoubleArrowUpOutlinedIcon />,
+    description: "Contribution to Coop",
+    date: "January 10, 2025",
+    amount: "500",
+  },
+  {
+    id: 1,
+    icon: <KeyboardDoubleArrowUpOutlinedIcon />,
+    description: "Contribution to Coop",
+    date: "January 10, 2025",
+    amount: "500",
+  },
+  {
+    id: 1,
+    icon: <KeyboardDoubleArrowUpOutlinedIcon />,
+    description: "Contribution to Coop",
+    date: "January 10, 2025",
+    amount: "500",
+  },
+  {
+    id: 1,
+    icon: <KeyboardDoubleArrowUpOutlinedIcon />,
+    description: "Contribution to Coop",
+    date: "January 10, 2025",
+    amount: "500",
+  },
+  {
+    id: 1,
+    icon: <KeyboardDoubleArrowUpOutlinedIcon />,
+    description: "Contribution to Coop",
+    date: "January 10, 2025",
+    amount: "500",
+  },
+  {
+    id: 1,
+    icon: <KeyboardDoubleArrowUpOutlinedIcon />,
+    description: "Contribution to Coop",
+    date: "January 10, 2025",
+    amount: "500",
+  },
+  {
+    id: 1,
+    icon: <KeyboardDoubleArrowUpOutlinedIcon />,
+    description: "Contribution to Coop",
+    date: "January 10, 2025",
+    amount: "500",
   },
 ];
 
@@ -150,7 +217,7 @@ const HomePage = () => {
               <Box
                 sx={{
                   width: "100%",
-                  height: 50,
+                  height: "6.5vh",
                   display: "flex",
                   flexDirection: "row",
                   alignItems: "center",
@@ -165,6 +232,29 @@ const HomePage = () => {
                 </Typography>
               </Box>
               <Divider variant="fullWidth" sx={{ bgcolor: "primary.main" }} />
+              <Box
+                sx={{
+                  width: "100%",
+                  height: "40vh", // Fixed height for the scrollable area
+                  overflowY: "auto", // Enable vertical scrolling
+                  scrollbarWidth: "none", // Firefox: slim scrollbar
+                  "&::-webkit-scrollbar": { width: "6px" }, // Chrome/Safari: slim scrollbar
+                  "&::-webkit-scrollbar-thumb": {
+                    backgroundColor: "primary.main",
+                    borderRadius: "4px",
+                  },
+                }}
+              >
+                {/* Green boxes */}
+                {activities.map((_) => (
+                  <Activity
+                    amount={_.amount}
+                    date={_.date}
+                    description={_.description}
+                    icon={_.icon}
+                  />
+                ))}
+              </Box>
             </Paper>
           </Grid>
           <Grid size={4}>
@@ -228,6 +318,7 @@ const HomePage = () => {
                       display: "flex",
                       justifyContent: "center",
                       alignItems: "center",
+                      mr: 1,
                     }}
                   >
                     <AddSharpIcon sx={{ color: "secondary.main" }} />
@@ -267,6 +358,7 @@ const HomePage = () => {
                       display: "flex",
                       justifyContent: "center",
                       alignItems: "center",
+                      mr: 1,
                     }}
                   >
                     <CreditCardOutlinedIcon sx={{ color: "primary.main" }} />
@@ -306,6 +398,7 @@ const HomePage = () => {
                       display: "flex",
                       justifyContent: "center",
                       alignItems: "center",
+                      mr: 1,
                     }}
                   >
                     <SavingsOutlinedIcon sx={{ color: "primary.main" }} />
@@ -345,6 +438,7 @@ const HomePage = () => {
                       display: "flex",
                       justifyContent: "center",
                       alignItems: "center",
+                      mr: 1,
                     }}
                   >
                     <RecyclingSharpIcon sx={{ color: "primary.main" }} />
@@ -377,3 +471,69 @@ const HomePage = () => {
 };
 
 export default HomePage;
+
+const Activity = ({ icon, description, date, amount }) => {
+  return (
+    <>
+      <Divider />
+      <Box
+        sx={{
+          height: "6vh",
+          width: "100%",
+          borderColor: "primary.main",
+          display: "flex",
+          flexDirection: "row",
+          alignItems: "center",
+          justifyContent: "space-evenly",
+          px: 2,
+        }}
+      >
+        <Box sx={{ width: "10%", bgcolor: "white" }}>
+          <Box
+            sx={{
+              bgcolor: "primary.main",
+              width: 35,
+              height: 35,
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              borderRadius: 35 / 2,
+            }}
+          >
+            <Icon sx={{ display: "flex", color: "secondary.main" }}>
+              {icon}
+            </Icon>
+          </Box>
+        </Box>
+        <Box sx={{ width: "80%" }}>
+          <Typography
+            variant="body2"
+            sx={{
+              color: "primary.black",
+              fontSize: 13,
+              fontWeight: "bold",
+            }}
+          >
+            {description}
+          </Typography>
+          <Typography
+            variant="body1"
+            sx={{ fontSize: 12, fontWeight: "bold", color: "primary.black" }}
+          >
+            {date}
+          </Typography>
+        </Box>
+        <Box
+          sx={{
+            width: "10%",
+            display: "flex",
+            justifyContent: "flex-end",
+            alignItems: "center",
+          }}
+        >
+          <Typography>{amount}</Typography>
+        </Box>
+      </Box>
+    </>
+  );
+};

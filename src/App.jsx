@@ -19,11 +19,13 @@ import ProtectedRoute from "./components/auth/ProtectedRoute";
 import CoopSearch from "./components/auth/CoopSearch";
 import LoanPage from "./pages/LoanPage";
 import AssetPage from "./pages/AssetPage";
+import TransactionPage from "./pages/TransactionPage";
 
 const theme = createTheme({
   palette: {
     primary: {
-      main: "#FFB300",
+      main: "#000",
+      // main: "#FFB300",
       light: "#60A5FA",
       dark: "#2563EB",
       black: "#4B5563",
@@ -130,6 +132,7 @@ function App() {
             <Route index element={<HomePage />} />
             <Route path="loans" element={<LoanPage />} />
             <Route path="assets" element={<AssetPage />} />
+            <Route path="transactions" element={<TransactionPage />} />
           </Route>
 
           {/* Redirect any unknown routes to landing page */}

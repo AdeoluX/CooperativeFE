@@ -20,10 +20,62 @@ import Divider from "@mui/material/Divider";
 import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
 import CreditScoreOutlinedIcon from "@mui/icons-material/CreditScoreOutlined";
 import SavingsOutlinedIcon from "@mui/icons-material/SavingsOutlined";
+import PeopleOutlineIcon from "@mui/icons-material/PeopleOutlined";
+import AccountBalanceIcon from "@mui/icons-material/AccountBalance";
+import ReceiptOutlinedIcon from "@mui/icons-material/ReceiptOutlined";
+import CompareArrowsOutlinedIcon from "@mui/icons-material/CompareArrowsOutlined";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 import React, { useState, useEffect } from "react";
 import { Outlet, useLocation, useNavigate } from "react-router-dom";
 import apiService from "../services/api";
+
+const roleBasedSidebarItems = {
+  user: [
+    { text: "Home", icon: <HomeOutlinedIcon />, path: "/dashboard" },
+    {
+      text: "Loans",
+      icon: <CreditScoreOutlinedIcon />,
+      path: "/dashboard/loans",
+    },
+    {
+      text: "Assets",
+      icon: <SavingsOutlinedIcon />,
+      path: "/dashboard/assets",
+    },
+    {
+      text: "Transactions",
+      icon: <CompareArrowsOutlinedIcon />,
+      path: "/dashboard/transactions",
+    },
+  ],
+  admin: [
+    { text: "Home", icon: <HomeOutlinedIcon />, path: "/dashboard" },
+    { text: "Users", icon: <PeopleOutlineIcon />, path: "/dashboard/users" },
+    {
+      text: "Loans",
+      icon: <CreditScoreOutlinedIcon />,
+      path: "/dashboard/loans",
+    },
+    {
+      text: "Assets",
+      icon: <SavingsOutlinedIcon />,
+      path: "/dashboard/assets",
+    },
+  ],
+  accountant: [
+    { text: "Home", icon: <HomeOutlinedIcon />, path: "/dashboard" },
+    {
+      text: "Accounts",
+      icon: <AccountBalanceIcon />,
+      path: "/dashboard/accounts",
+    },
+    {
+      text: "Loans",
+      icon: <CreditScoreOutlinedIcon />,
+      path: "/dashboard/loans",
+    },
+  ],
+};
 
 const usersBarItems = [
   { text: "Home", icon: <HomeOutlinedIcon />, path: "/dashboard" },
@@ -47,9 +99,8 @@ const DashboardPage = () => {
     let data = localStorage.getItem("userData");
     if (data) {
       data = JSON.parse(data);
-      if (data.cooperativeId) {
-        setSideBarItems(usersBarItems);
-      }
+      setSideBarItems(roleBasedSidebarItems[data.role]);
+      console.log(data.role);
     }
     setUserData(data);
   }, []);
@@ -144,7 +195,7 @@ const DashboardPage = () => {
                   </ListItemIcon>
                   <ListItemText
                     primary={item.text}
-                    sx={{ color: "white", fontWeight: "bold" }}
+                    sx={{ color: "white", fontWeight: "bold", fontSize: 30 }}
                   />
                 </ListItemButton>
               </ListItem>
